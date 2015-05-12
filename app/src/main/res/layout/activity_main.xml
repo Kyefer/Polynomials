@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal" >
 
-        <TextView
+        TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

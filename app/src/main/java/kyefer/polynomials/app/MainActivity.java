@@ -29,11 +29,11 @@ public class MainActivity extends Activity {
 
     private int degree;
 
-    EditText degreeEditText;
-    TableLayout coefTableScrollView;
-    Button degreeButton;
-    Button findRootsButton;
-    Button clearButton;
+    private EditText degreeEditText;
+    private TableLayout coefTableScrollView;
+    private Button degreeButton;
+    private Button findRootsButton;
+    private Button clearButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,6 @@ public class MainActivity extends Activity {
         updateSavedCoefList();
     }
 
-
     private void updateSavedCoefList() {
         coefTableScrollView.removeAllViews();
         degreeEditText.setText("" + degree);
@@ -67,13 +66,11 @@ public class MainActivity extends Activity {
         }
     }
 
-
     private void saveDegree() {
         SharedPreferences.Editor preferenceEditor = savedData.edit();
         preferenceEditor.putInt("DEGREE", degree);
         preferenceEditor.apply();
     }
-
 
     private void saveCoef(int newCoefWithNum, int pos) {
         SharedPreferences.Editor preferenceEditor = savedData.edit();
@@ -81,12 +78,10 @@ public class MainActivity extends Activity {
         preferenceEditor.apply();
     }
 
-
     private int getCoef(int pos) {
         savedData = getSharedPreferences(MainActivity.SAVED_DATA, MODE_PRIVATE);
         return savedData.getInt(COEFSTRINGS.charAt(pos) + "", 0);
     }
-
 
     private void insertCoefInScrollView(int position, final int coefWithNum) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -104,7 +99,6 @@ public class MainActivity extends Activity {
 
         coefTableScrollView.addView(newCoefRow);
     }
-
 
     public OnClickListener degreeButtonListener = new OnClickListener() {
 
@@ -131,7 +125,6 @@ public class MainActivity extends Activity {
             }
         }
     };
-
 
     public OnClickListener findRootsButtonListener = new OnClickListener() {
 
@@ -173,7 +166,6 @@ public class MainActivity extends Activity {
 
     };
 
-
     public DialogInterface.OnClickListener deleteAllData = new DialogInterface.OnClickListener() {
 
         @SuppressLint("NewApi")
@@ -186,7 +178,6 @@ public class MainActivity extends Activity {
             degreeEditText.setText("");
         }
     };
-
 
     private class CustomTextWatcher implements TextWatcher {
         private EditText mEditText;
@@ -220,5 +211,4 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
 }
