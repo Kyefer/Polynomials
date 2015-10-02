@@ -15,23 +15,6 @@
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal" >
-
-        TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_span="2"
-            android:gravity="center_horizontal"
-            android:padding="5dp"
-            android:text="@string/activity_title"
-            android:textSize="@dimen/text_size" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
          >
 
         <TextView
@@ -57,11 +40,11 @@
             android:id="@+id/degreeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enter_tutton" />
+            android:text="@string/enter_button" />
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow3"
+        android:id="@+id/tableRow2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" >

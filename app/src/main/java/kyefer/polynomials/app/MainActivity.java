@@ -66,21 +66,10 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void saveDegree() {
-        SharedPreferences.Editor preferenceEditor = savedData.edit();
-        preferenceEditor.putInt("DEGREE", degree);
-        preferenceEditor.apply();
-    }
-
     private void saveCoef(int newCoefWithNum, int pos) {
         SharedPreferences.Editor preferenceEditor = savedData.edit();
         preferenceEditor.putInt(COEFSTRINGS.charAt(pos) + "", newCoefWithNum);
         preferenceEditor.apply();
-    }
-
-    private int getCoef(int pos) {
-        savedData = getSharedPreferences(MainActivity.SAVED_DATA, MODE_PRIVATE);
-        return savedData.getInt(COEFSTRINGS.charAt(pos) + "", 0);
     }
 
     private void insertCoefInScrollView(int position, final int coefWithNum) {
@@ -120,7 +109,11 @@ public class MainActivity extends Activity {
                 degreeEditText.setText(savedData.getInt("DEGREE", 1) + "");
             } else {
                 degree = Integer.parseInt(degreeEditText.getText().toString());
-                saveDegree();
+
+                SharedPreferences.Editor preferenceEditor = savedData.edit();
+                preferenceEditor.putInt("DEGREE", degree);
+                preferenceEditor.apply();
+
                 updateSavedCoefList();
             }
         }
@@ -133,7 +126,7 @@ public class MainActivity extends Activity {
 
             boolean allZeros = true;
             for (int i = 0; i <= degree; i++) {
-                if (getCoef(i) != 0)
+                if (savedData.getInt(COEFSTRINGS.charAt(i) + "", 0) != 0)
                     allZeros = false;
             }
 
@@ -168,7 +161,6 @@ public class MainActivity extends Activity {
 
     public DialogInterface.OnClickListener deleteAllData = new DialogInterface.OnClickListener() {
 
-        @SuppressLint("NewApi")
         @Override
         public void onClick(DialogInterface dialog, int which) {
             coefTableScrollView.removeAllViews();
